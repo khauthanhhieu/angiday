@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Thêm quán ăn</title>
+    <div th:replace="partials/head"></div>
+</head>
+<body>
+<div class="dark-bg sticky-top">
+    <div class="container-fluid">
+        <div th:replace="partials/header"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-12 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Thêm quán ăn</h5>
+                    <form class="container form-signin">
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputName">Tên quán</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" id="inputName" class="form-control" placeholder="Tên quán" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputPassword">Địa chỉ</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" id="inputPassword" class="form-control" placeholder="Địa chỉ" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label>Loại quán ăn</label>
+                            </div>
+                            <div class="col-10">
+                                <select class="form-control">
+                                    <option>Quán cơm</option>
+                                    <option>Quán lẩu</option>
+                                    <option>Quán bia</option>
+                                    <option>Nhà hàng</option>
+                                    <option>Khác</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label>Giờ hoạt động</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="time" id="inputOpen" class="form-control" required>
+                            </div>
+                            <div class="col-2">
+                                <label class="text-center">đến</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="time" id="inputClose" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputDesc">Mô tả</label>
+                            </div>
+                            <div class="col-10">
+                                <textarea type="text" rows="4" id="inputDesc" class="form-control" placeholder="Mô tả" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputDesc">Hình ảnh</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="file" id="inputFile" class="form-control-file" placeholder="Hình ảnh" required>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="partials/footer"></div>
+</body>
+</html>

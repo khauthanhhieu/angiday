@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Thêm Review</title>
+    <div th:replace="partials/head"></div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div class="dark-bg sticky-top">
+    <div class="container-fluid">
+        <div th:replace="partials/header"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-12 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Viết Review</h5>
+                    <form class="container form-signin">
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputName">Tìm kiếm quán</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" id="inputName" class="form-control" placeholder="Nhập tên quán hay địa chỉ..." required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputPassword">Xếp hạng tổng thế</label>
+                            </div>
+                            <div class="col-10">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-2 form-control-group">
+                            <div class="col-2">
+                                <label for="inputTitle">Tiêu đề bài Review</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" id="inputTitle" class="form-control" required autofocus>
+                            </div>
+                        </div>
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputDesc">Nội dung</label>
+                            </div>
+                            <div class="col-10">
+                                <textarea type="text" rows="10" id="inputDesc" class="form-control" placeholder="Nội dung..." required></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputDesc">Hình ảnh</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="file" id="inputFile" class="form-control-file" placeholder="Hình ảnh" required>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="partials/footer"></div>
+</body>
+</html>

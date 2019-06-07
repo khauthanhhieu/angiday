@@ -18,33 +18,33 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Tham gia Angiday để khám phá những địa điểm mới</h5>
-                    <form class="form-signin">
+                    <form class="form-signin" th:object="${user}" th:action="@{save}" action="#" method="post" >
                         <div class="form-label-group">
-                            <input type="text" id="inputUsername" class="form-control" placeholder="Tên người dùng" required autofocus>
+                            <input type="text" th:field="*{username}" id="inputUsername" class="form-control" placeholder="Tên người dùng" required autofocus>
                             <label for="inputUsername">Tên người dùng</label>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <input type="password" th:field="*{password}" id="inputPassword" class="form-control" placeholder="Password" required>
                             <label for="inputPassword">Password</label>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
+                            <input type="email" th:field="*{email}" id="inputEmail" class="form-control" placeholder="Email" required>
                             <label for="inputEmail">Email</label>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="email" id="inputName" class="form-control" placeholder="Họ và tên" required>
+                            <input type="text" th:field="*{fullname}" id="inputName" class="form-control" placeholder="Họ và tên" required>
                             <label for="inputName">Họ và tên</label>
                         </div>
 
                         <div class="form-label-group">
-                            <select class="form-control">
-                                <option selected="selected">Giới tính...</option>
-                                <option>Nam</option>
-                                <option>Nữ</option>
-                                <option>Khác</option>
+                            <select class="form-control" th:field="*{sex}">
+                                <option th:value="0" selected="selected">Giới tính...</option>
+                                <option th:value="0">Nam</option>
+                                <option th:value="1">Nữ</option>
+                                <option th:value="0">Khác</option>
                             </select>
                         </div>
 
@@ -52,7 +52,7 @@
                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                             <label class="custom-control-label" for="customCheck1">Ghi nhớ mật khẩu</label>
                         </div>
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng kí</button>
+                        <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Đăng kí"/>
                     </form>
                 </div>
             </div>

@@ -557,6 +557,27 @@
     </section>
     <!--//END ADD LISTING -->
 
+    <table class="table table-active">
+        <tr>
+            <th>Name</th>
+            <th>Local</th>
+            <th>Type</th>
+            <th>Open</th>
+            <th>Close</th>
+            <th>Des</th>
+            <th>Image</th>
+        </tr>
+        <tr th:each="eatery : ${eateryList}">
+            <td th:text="${eatery.name}"></td>
+            <td th:text="${eatery.local}"></td>
+            <td th:text="${eatery.type}"></td>
+            <td th:text="${eatery.open}"></td>
+            <td th:text="${eatery.close}"></td>
+            <td th:text="${eatery.des}"></td>
+            <td th:text="${eatery.image}"></td>
+        </tr>
+    </table>
+
     <div th:replace="partials/footer"></div>
     <div th:replace="partials/script"></div>
 </body>

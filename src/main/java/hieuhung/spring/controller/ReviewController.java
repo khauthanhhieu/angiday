@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class reviewController {
+public class ReviewController {
     @GetMapping("/review")
     public String main(Model model) {
         return "detail-review"; //view

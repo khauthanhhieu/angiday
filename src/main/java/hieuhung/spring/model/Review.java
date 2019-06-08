@@ -15,11 +15,11 @@ public class Review {
     @Column(name = "id_user")
     private int idUser;
 
-    @Column(name = "id_eateris")
+    @Column(name = "id_eatery")
     private int idEatery;
 
-    @Column(name = "numofstar")
-    private int numOfStar;
+    @Column(name = "point")
+    private int point;
 
     @Column(name = "date")
     private Date date;
@@ -65,12 +65,12 @@ public class Review {
         this.idEatery = idEatery;
     }
 
-    public int getNumOfStar() {
-        return numOfStar;
+    public int getPoint() {
+        return point;
     }
 
-    public void setNumOfStar(int numOfStar) {
-        this.numOfStar = numOfStar;
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     public Date getDate() {

@@ -578,6 +578,40 @@
         </tr>
     </table>
 
+    <div class="row">
+        <div class="col-md-4 featured-responsive" th:each="eatery : ${eateryList}">
+            <div class="featured-place-wrap">
+                <a th:href="@{/eatery/detail(id=${eatery.id})}" >
+                    <img src="/images/featured1.jpg" class="img-fluid" alt="#">
+                    <span th:classappend="${2 == 1} ? featured-rating-green : featured-rating" class="">6.5</span>
+                    <div class="featured-title-box">
+                        <h6 th:text="${eatery.name}"></h6>
+                        <p th:text="${eatery.type}"></p> <span>• </span>
+                        <p>3 Reviews</p> <span> • </span>
+                        <p><span>$$$</span>$$</p>
+                        <ul>
+                            <li><span class="icon-location-pin"></span>
+                                <p th:text="${eatery.local}"></p>
+                            </li>
+                            <li><span class="icon-screen-smartphone"></span>
+                                <p th:text="'+'+${eatery.phone}"></p>
+                            </li>
+                            <li><span class="icon-link"></span>
+                                <p>https://burgerandlobster.com</p>
+                            </li>
+
+                        </ul>
+                        <div class="bottom-icons">
+                            <div class="open-now">OPEN NOW</div>
+                            <span class="ti-heart"></span>
+                            <span class="ti-bookmark"></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div th:replace="partials/footer"></div>
     <div th:replace="partials/script"></div>
 </body>

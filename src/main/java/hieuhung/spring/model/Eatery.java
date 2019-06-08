@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Eatery {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -31,6 +31,9 @@ public class Eatery {
 
     @Column(name = "image")
     private String image;
+
+    @Column(name = "phone")
+    private Long phone;
 
     public Integer getId() {
         return id;
@@ -96,5 +99,24 @@ public class Eatery {
         this.image = image;
     }
 
+    public Long getPhone() {
+        return phone;
+    }
 
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public Eatery() {}
+
+    public Eatery(String name, String local, String type, Integer open, Integer close, String des, String image, Long phone) {
+        this.name = name;
+        this.local = local;
+        this.type = type;
+        this.open = open;
+        this.close = close;
+        this.des = des;
+        this.image = image;
+        this.phone = phone;
+    }
 }

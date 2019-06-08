@@ -17,22 +17,22 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Thêm quán ăn</h5>
-                    <form class="container form-signin">
+                    <form class="container form-signin" th:object="${eatery}" th:action="@{/eatery/saveEatery}" action="#" method="post">
                         <div class="row mb-2 form-label-group">
                             <div class="col-2">
                                 <label for="inputName">Tên quán</label>
                             </div>
                             <div class="col-10">
-                                <input type="text" id="inputName" class="form-control" placeholder="Tên quán" required autofocus>
+                                <input type="text" th:field="*{name}" id="inputName" class="form-control" placeholder="Tên quán" required autofocus>
                             </div>
                         </div>
 
                         <div class="row mb-2 form-label-group">
                             <div class="col-2">
-                                <label for="inputPassword">Địa chỉ</label>
+                                <label for="inputLocal">Địa chỉ</label>
                             </div>
                             <div class="col-10">
-                                <input type="text" id="inputPassword" class="form-control" placeholder="Địa chỉ" required>
+                                <input type="text" th:field="*{local}" id="inputLocal" class="form-control" placeholder="Địa chỉ" required>
                             </div>
                         </div>
 
@@ -41,27 +41,22 @@
                                 <label>Loại quán ăn</label>
                             </div>
                             <div class="col-10">
-                                <select class="form-control">
-                                    <option>Quán cơm</option>
-                                    <option>Quán lẩu</option>
-                                    <option>Quán bia</option>
-                                    <option>Nhà hàng</option>
-                                    <option>Khác</option>
-                                </select>
+                                <input type="text" th:field="*{type}" id="inputType" class="form-control" placeholder="Loại quán ăn" required>
                             </div>
                         </div>
+
                         <div class="row mb-2 form-label-group">
                             <div class="col-2">
                                 <label>Giờ hoạt động</label>
                             </div>
                             <div class="col-4">
-                                <input type="time" id="inputOpen" class="form-control" required>
+                                <input type="text" th:field="*{open}" id="inputOpen" class="form-control">
                             </div>
                             <div class="col-2">
                                 <label class="text-center">đến</label>
                             </div>
                             <div class="col-4">
-                                <input type="time" id="inputClose" class="form-control" required>
+                                <input type="text" th:field="*{close}" id="inputClose" class="form-control">
                             </div>
                         </div>
                         <div class="row mb-2 form-label-group">
@@ -69,15 +64,25 @@
                                 <label for="inputDesc">Mô tả</label>
                             </div>
                             <div class="col-10">
-                                <textarea type="text" rows="4" id="inputDesc" class="form-control" placeholder="Mô tả" required></textarea>
+                                <textarea type="text" th:field="*{des}" rows="4" id="inputDesc" class="form-control" placeholder="Mô tả" required></textarea>
                             </div>
                         </div>
+
+                        <div class="row mb-2 form-label-group">
+                            <div class="col-2">
+                                <label for="inputPhone">Số điện thoại</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="number" th:field="*{phone}" id="inputPhone" class="form-control" placeholder="Số điện thoại" required>
+                            </div>
+                        </div>
+
                         <div class="row mb-2 form-label-group">
                             <div class="col-2">
                                 <label for="inputDesc">Hình ảnh</label>
                             </div>
                             <div class="col-10">
-                                <input type="file" id="inputFile" class="form-control-file" placeholder="Hình ảnh" required>
+                                <input type="file" id="inputFile" class="form-control-file" placeholder="Hình ảnh">
                             </div>
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng</button>

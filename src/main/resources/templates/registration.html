@@ -18,7 +18,7 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Tham gia Angiday để khám phá những địa điểm mới</h5>
-                    <form class="form-signin" th:object="${user}" th:action="@{save}" action="#" method="post" >
+                    <form class="form-signin" th:object="${user}" th:action="@{saveUser}" action="#" method="post" >
                         <div class="form-label-group">
                             <input type="text" th:field="*{username}" id="inputUsername" class="form-control" placeholder="Tên người dùng" required autofocus>
                             <label for="inputUsername">Tên người dùng</label>

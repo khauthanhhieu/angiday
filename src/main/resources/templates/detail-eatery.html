@@ -74,7 +74,7 @@
                         <span>9.5</span>
                     </div>
                     <div class="review-btn">
-                        <a href="#" class="btn btn-outline-danger">WRITE A REVIEW</a>
+                        <a th:href="@{/review/create?id={id}(id=${eatery.id})}" class="btn btn-outline-danger">WRITE A REVIEW</a>
                         <span>34 reviews</span>
                     </div>
                     <div class="reserve-btn">

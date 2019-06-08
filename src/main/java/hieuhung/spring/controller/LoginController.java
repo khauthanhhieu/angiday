@@ -26,7 +26,7 @@ public class LoginController {
         return "registration"; //view
     }
 
-    @RequestMapping(value = "saveUser", method = RequestMethod.POST)
+    @RequestMapping(value = "save-user", method = RequestMethod.POST)
     public String save(User user) {
         userService.saveUser(user);
         return "index";

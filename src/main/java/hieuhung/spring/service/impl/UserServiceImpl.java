@@ -6,6 +6,7 @@ import hieuhung.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,13 +15,18 @@ public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
 
     @Override
+    public List<User> getAllUser() {
+        return (List<User>) userRepo.findAll();
+    }
+
+    @Override
     public void saveUser(User user){
         userRepo.save(user);
     }
 
     @Override
-    public void deleteUser(User user) {
-        userRepo.delete(user);
+    public void deleteUser(Integer id) {
+        userRepo.deleteById(id);
     }
 
     @Override

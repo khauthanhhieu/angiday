@@ -4,12 +4,7 @@
 <head>
     <title>Thêm Review</title>
     <div th:replace="partials/head"></div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .checked {
-            color: orange;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/rate.css">
 </head>
 <body>
 <div class="dark-bg sticky-top">
@@ -23,34 +18,44 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Viết Review</h5>
-                    <form class="container form-signin">
+                    <form th:object="${rItem}" th:action="@{save-review}" action="#" method="post" class="container form-signin">
                         <div class="row mb-2 form-label-group">
                             <div class="col-2">
                                 <label for="inputName">Tìm kiếm quán</label>
                             </div>
                             <div class="col-10">
-                                <input type="text" id="inputName" class="form-control" placeholder="Nhập tên quán hay địa chỉ..." required autofocus>
+                                <input type="text" th:value="${eItem.name}" id="inputName" class="form-control" placeholder="Nhập tên quán hay địa chỉ..." readonly>
                             </div>
                         </div>
 
                         <div class="row mb-2 form-label-group">
                             <div class="col-2">
-                                <label for="inputPassword">Xếp hạng tổng thế</label>
+                                <label>Xếp hạng tổng thế</label>
                             </div>
-                            <div class="col-10">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
+                            <span class="col-10 rating">
+                                <input th:field="*{numOfStar}" value="1" type="radio" class="rating-input"
+                                       id="rating-input-1-5" name="rating-input-1">
+                                <label for="rating-input-1-5" class="rating-star"></label>
+                                <input th:field="*{numOfStar}" value="2" type="radio" class="rating-input"
+                                       id="rating-input-1-4" name="rating-input-1">
+                                <label for="rating-input-1-4" class="rating-star"></label>
+                                <input th:field="*{numOfStar}" value="3" type="radio" class="rating-input"
+                                       id="rating-input-1-3" name="rating-input-1">
+                                <label for="rating-input-1-3" class="rating-star"></label>
+                                <input th:field="*{numOfStar}" value="4" type="radio" class="rating-input"
+                                       id="rating-input-1-2" name="rating-input-1">
+                                <label for="rating-input-1-2" class="rating-star"></label>
+                                <input th:field="*{numOfStar}" value="5" type="radio" class="rating-input"
+                                       id="rating-input-1-1" name="rating-input-1">
+                                <label for="rating-input-1-1" class="rating-star"></label>
+                            </span>
                         </div>
                         <div class="row mb-2 form-control-group">
                             <div class="col-2">
                                 <label for="inputTitle">Tiêu đề bài Review</label>
                             </div>
                             <div class="col-10">
-                                <input type="text" id="inputTitle" class="form-control" required autofocus>
+                                <input th:field="*{title}" type="text" id="inputTitle" class="form-control" required autofocus>
                             </div>
                         </div>
                         <div class="row mb-2 form-label-group">
@@ -58,17 +63,38 @@
                                 <label for="inputDesc">Nội dung</label>
                             </div>
                             <div class="col-10">
-                                <textarea type="text" rows="10" id="inputDesc" class="form-control" placeholder="Nội dung..." required></textarea>
+                                <textarea th:field="*{content}" type="text" rows="10" id="inputDesc" class="form-control" placeholder="Nội dung..." required></textarea>
                             </div>
                         </div>
-                        <div class="row mb-2 form-label-group">
+                        <hr class="my-4">
+
+                        <div class="row mb-2 form-control-group">
                             <div class="col-2">
-                                <label for="inputDesc">Hình ảnh</label>
+                                <label for="inputTel">Số điện thoại của quán</label>
                             </div>
                             <div class="col-10">
-                                <input type="file" id="inputFile" class="form-control-file" placeholder="Hình ảnh" required>
+                                <input th:field="*{tel}" type="tel" id="inputTel" class="form-control" autofocus>
                             </div>
                         </div>
+                        <hr class="my-4">
+                        <div class="row mb-2 form-control-group">
+                            <div class="col-2">
+                                <label for="inputWname">Tên wifi</label>
+                            </div>
+                            <div class="col-10">
+                                <input th:field="*{wname}" type="tel" id="inputWname" class="form-control" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 form-control-group">
+                            <div class="col-2">
+                                <label for="inputWpass">Mật khẩu Wifi</label>
+                            </div>
+                            <div class="col-10">
+                                <input th:field="*{wpass}" type="tel" id="inputWpass" class="form-control" autofocus>
+                            </div>
+                        </div>
+
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng</button>
                     </form>
                 </div>

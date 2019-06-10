@@ -1,10 +1,11 @@
 package hieuhung.spring.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class User{
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -24,6 +25,9 @@ public class User{
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "role")
+    private boolean role;
 
     public int getId() {
         return id;
@@ -73,22 +77,32 @@ public class User{
         this.password = password;
     }
 
+    public boolean getRole() {
+        return role;
+    }
+
+    public void setRole(boolean role) {
+        this.role = role;
+    }
+
     public User() {}
 
-    public User(int id, String fullname, String email, boolean sex, String username, String password) {
+    public User(int id, String fullname, String email, boolean sex, String username, String password, boolean role) {
         this.id = id;
         this.fullname = fullname;
         this.email = email;
         this.sex = sex;
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
-    public User(String fullname, String email, boolean sex, String username, String password) {
+    public User(String fullname, String email, boolean sex, String username, String password, boolean role) {
         this.fullname = fullname;
         this.email = email;
         this.sex = sex;
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 }

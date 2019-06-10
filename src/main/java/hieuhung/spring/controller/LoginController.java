@@ -33,10 +33,14 @@ public class LoginController {
     }
 
     @RequestMapping(value = "save-user", method = RequestMethod.POST)
-    public String save(User user) {
-        userService.saveUser(user);
-        return "redirect:/";
-
+    public String save(Model model, User user) {
+        User exist = userService.findByUsername(user.getUsername());
+        System.out.println(exist);
+        if (exist == null) {
+            userService.saveUser(user);
+            return "redirect:/login";
+        }
+        return "redirect:/signup?error";
     }
 
     @GetMapping("/logout")

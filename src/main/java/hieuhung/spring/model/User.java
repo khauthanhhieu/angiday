@@ -15,7 +15,7 @@ public class User implements Serializable {
     private String fullname;
 
     @Column(name = "sex")
-    private boolean sex;
+    private int sex;
 
     @Column(name = "email")
     private String email;
@@ -45,11 +45,11 @@ public class User implements Serializable {
         this.fullname = fullname;
     }
 
-    public boolean isSex() {
+    public int getSex() {
         return sex;
     }
 
-    public void setSex(boolean sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 
@@ -87,7 +87,7 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(int id, String fullname, String email, boolean sex, String username, String password, boolean role) {
+    public User(int id, String fullname, String email, int sex, String username, String password, boolean role) {
         this.id = id;
         this.fullname = fullname;
         this.email = email;
@@ -97,12 +97,17 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public User(String fullname, String email, boolean sex, String username, String password, boolean role) {
+    public User(String fullname, String email, int sex, String username, String password, boolean role) {
         this.fullname = fullname;
         this.email = email;
         this.sex = sex;
         this.username = username;
         this.password = password;
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Username = %s, Email = %s", username, email);
     }
 }

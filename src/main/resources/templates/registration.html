@@ -18,6 +18,7 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Tham gia Angiday để khám phá những địa điểm mới</h5>
+                    <p style="color:red" th:if="${param.error}" id="error">Username đã được sử dụng, vui lòng chọn Username khác</p>
                     <form class="form-signin" th:object="${user}" th:action="@{save-user}" action="#" method="post" >
                         <div class="form-label-group">
                             <input type="text" th:field="*{username}" id="inputUsername" class="form-control" placeholder="Tên người dùng" required autofocus>
@@ -40,11 +41,11 @@
                         </div>
 
                         <div class="form-label-group">
-                            <select class="form-control" th:field="*{sex}">
-                                <option th:value="0" selected="selected">Giới tính...</option>
-                                <option th:value="0">Nam</option>
-                                <option th:value="1">Nữ</option>
-                                <option th:value="0">Khác</option>
+                            <select class="form-control" th:field="*{sex}" id="selectSex" required>
+                                <option th:value="0">Giới tính...</option>
+                                <option th:value="1">Nam</option>
+                                <option th:value="2">Nữ</option>
+                                <option th:value="3">Khác</option>
                             </select>
                         </div>
 

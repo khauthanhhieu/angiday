@@ -40,4 +40,8 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findById(Integer id) {
         return userRepo.findById(id);
     }
+
+    public User findByUsername(String username) {
+        return userRepo.findByUsername(username);
+    }
 }

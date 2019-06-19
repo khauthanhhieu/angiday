@@ -1,8 +1,10 @@
 package hieuhung.spring.controller;
 
+import hieuhung.spring.model.EType;
 import hieuhung.spring.model.Eatery;
 import hieuhung.spring.model.Review;
 import hieuhung.spring.model.User;
+import hieuhung.spring.service.impl.ETypeServiceImpl;
 import hieuhung.spring.service.impl.EateryServiceImpl;
 import hieuhung.spring.service.impl.ReviewServiceImpl;
 import hieuhung.spring.service.impl.UserServiceImpl;

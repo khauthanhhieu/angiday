@@ -42,7 +42,11 @@
                                 <label>Loại quán ăn</label>
                             </div>
                             <div class="col-10">
-                                <input type="text" th:field="*{type}" id="inputType" class="form-control" placeholder="Loại quán ăn" required>
+                                <select th:field="*{type}" id="inputType" class="form-control">
+                                    <th:block th:each="etype : ${etypes}">
+                                        <option th:value="${etype.id}" th:text="${etype.name}"></option>
+                                    </th:block>
+                                </select>
                             </div>
                         </div>
 

@@ -21,7 +21,7 @@ public class Eatery {
     private String local;
 
     @Column(name = "type")
-    private String type;
+    private Integer type;
 
     @Column(name = "open")
     private Integer open;
@@ -62,11 +62,11 @@ public class Eatery {
         this.local = local;
     }
 
-    public String getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -112,7 +112,7 @@ public class Eatery {
 
     public Eatery() {}
 
-    public Eatery(Integer id_user, String name, String local, String type, Integer open, Integer close, String des, String image, Long phone) {
+    public Eatery(Integer id_user, String name, String local, Integer type, Integer open, Integer close, String des, String image, Long phone) {
         this.id_user = id_user;
         this.name = name;
         this.local = local;

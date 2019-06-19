@@ -2,7 +2,7 @@ package hieuhung.spring.controller;
 
 import hieuhung.spring.model.Eatery;
 import hieuhung.spring.model.User;
-import hieuhung.spring.service.EateryService;
+import hieuhung.spring.service.impl.ETypeServiceImpl;
 import hieuhung.spring.service.impl.EateryServiceImpl;
 import hieuhung.spring.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,10 @@ public class EateryController {
     @Autowired
     private UserServiceImpl userService;
 
+    @Autowired
+    private ETypeServiceImpl eTypeService;
+
+
     @GetMapping("/eatery/create")
     public String getCreate(Model model) {
         Eatery eatery = new Eatery();
@@ -32,6 +36,9 @@ public class EateryController {
         User user = userService.findByUsername(username);
         eatery.setId_user(user.getId());
         model.addAttribute("eatery", eatery);
+
+        model.addAttribute("etypes", eTypeService.getAllEType());
+
         return "createEatery"; //view
     }
 

@@ -55,4 +55,9 @@ public class EateryController {
         model.addAttribute("eatery", eatery);
         return "detail-eatery";
     }
+
+    @GetMapping("/eatery/search")
+    public String getSearch(@RequestParam("name") String name, @RequestParam("addr") String addr) {
+        return "listing";
+    }
 }

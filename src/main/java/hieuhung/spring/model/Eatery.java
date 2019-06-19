@@ -11,6 +11,9 @@ public class Eatery {
     @Column(name = "id")
     private Integer id;
 
+    @Column(name = "id_user")
+    private Integer id_user;
+
     @Column(name = "name")
     private String name;
 
@@ -109,7 +112,8 @@ public class Eatery {
 
     public Eatery() {}
 
-    public Eatery(String name, String local, String type, Integer open, Integer close, String des, String image, Long phone) {
+    public Eatery(Integer id_user, String name, String local, String type, Integer open, Integer close, String des, String image, Long phone) {
+        this.id_user = id_user;
         this.name = name;
         this.local = local;
         this.type = type;
@@ -118,5 +122,13 @@ public class Eatery {
         this.des = des;
         this.image = image;
         this.phone = phone;
+    }
+
+    public void setId_user(Integer id_user) {
+        this.id_user = id_user;
+    }
+
+    public Integer getId_user() {
+        return  this.id_user;
     }
 }

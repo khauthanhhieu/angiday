@@ -1,8 +1,12 @@
 package hieuhung.spring.controller;
 
 import hieuhung.spring.model.Eatery;
+import hieuhung.spring.model.User;
 import hieuhung.spring.service.EateryService;
+import hieuhung.spring.service.impl.EateryServiceImpl;
+import hieuhung.spring.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,18 +19,26 @@ import java.util.Optional;
 
 @Controller
 public class EateryController {
-    @Autowired private EateryService eateryService;
+    @Autowired
+    private EateryServiceImpl eateryService;
+
+    @Autowired
+    private UserServiceImpl userService;
 
     @GetMapping("/eatery/create")
     public String getCreate(Model model) {
-        model.addAttribute("eatery", new Eatery());
+        Eatery eatery = new Eatery();
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findByUsername(username);
+        eatery.setId_user(user.getId());
+        model.addAttribute("eatery", eatery);
         return "createEatery"; //view
     }
 
     @RequestMapping(value = "/eatery/saveEatery", method = RequestMethod.POST)
     public String save(Eatery eatery) {
         eateryService.saveEatery(eatery);
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/eatery/detail")

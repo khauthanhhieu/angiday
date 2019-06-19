@@ -22,6 +22,7 @@
                             <div class="col-2">
                                 <label for="inputName">Tên quán</label>
                             </div>
+                            <input type="hidden" th:field="*{id_user}">
                             <div class="col-10">
                                 <input type="text" th:field="*{name}" id="inputName" class="form-control" placeholder="Tên quán" required autofocus>
                             </div>
@@ -47,13 +48,13 @@
 
                         <div class="row mb-2 form-label-group">
                             <div class="col-2">
-                                <label>Giờ hoạt động</label>
+                                <label for="inputOpen">Giờ hoạt động</label>
                             </div>
                             <div class="col-4">
                                 <input type="text" th:field="*{open}" id="inputOpen" class="form-control">
                             </div>
                             <div class="col-2">
-                                <label class="text-center">đến</label>
+                                <label for="inputClose" class="text-center">đến</label>
                             </div>
                             <div class="col-4">
                                 <input type="text" th:field="*{close}" id="inputClose" class="form-control">
@@ -82,7 +83,7 @@
                                 <label for="inputDesc">Hình ảnh</label>
                             </div>
                             <div class="col-10">
-                                <input type="file" id="inputFile" class="form-control-file" placeholder="Hình ảnh">
+                                <input type="file" th:field="*{image}" id="inputFile" class="form-control-file">
                             </div>
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng</button>

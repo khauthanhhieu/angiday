@@ -38,6 +38,9 @@ public class Eatery {
     @Column(name = "point")
     private float point;
 
+    @Column(name="image")
+    private Integer image;
+
 
     public Integer getId() {
         return id;
@@ -109,6 +112,14 @@ public class Eatery {
 
     public void setPoint(Float point) {
         this.point = point;
+    }
+
+    public Integer getImage() {
+        return image;
+    }
+
+    public void setImage(Integer image) {
+        this.image = image;
     }
 
     public Eatery() {}

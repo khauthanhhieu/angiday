@@ -39,6 +39,9 @@ public class Review {
     @Column(name = "tel")
     private String tel;
 
+    @Column(name="image")
+    private Integer image;
+
     @Column(name = "wname")
     private String wname;
 
@@ -139,5 +142,13 @@ public class Review {
 
     public int getIdUser() {
         return this.idUser;
+    }
+
+    public Integer getImage() {
+        return image;
+    }
+
+    public void setImage(Integer image) {
+        this.image = image;
     }
 }

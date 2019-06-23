@@ -2,6 +2,7 @@ package hieuhung.spring.controller;
 
 import hieuhung.spring.model.Eatery;
 import hieuhung.spring.model.Review;
+import hieuhung.spring.model.User;
 import hieuhung.spring.service.ETypeService;
 import hieuhung.spring.service.EateryService;
 import hieuhung.spring.service.ReviewService;
@@ -36,8 +37,8 @@ public class EateryController {
     public String getCreate(Model model) {
         Eatery eatery = new Eatery();
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        //User user = userService.findByUsername(username);
-        //eatery.setId_user(user.getId());
+        User user = userService.findByUsername(username);
+        eatery.setId_user(user.getId());
         model.addAttribute("eatery", eatery);
 
         model.addAttribute("etypes", eTypeService.getAllEType());

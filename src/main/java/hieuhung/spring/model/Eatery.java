@@ -3,7 +3,7 @@ package hieuhung.spring.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "eatery")
+@Table(name = "eateries")
 public class Eatery {
 
     @Id
@@ -32,11 +32,12 @@ public class Eatery {
     @Column(name = "des")
     private String des;
 
-    @Column(name = "image")
-    private String image;
-
     @Column(name = "phone")
     private Long phone;
+
+    @Column(name = "point")
+    private float point;
+
 
     public Integer getId() {
         return id;
@@ -94,14 +95,6 @@ public class Eatery {
         this.des = des;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public Long getPhone() {
         return phone;
     }
@@ -110,9 +103,17 @@ public class Eatery {
         this.phone = phone;
     }
 
+    public float getPoint() {
+        return point;
+    }
+
+    public void setPoint(Float point) {
+        this.point = point;
+    }
+
     public Eatery() {}
 
-    public Eatery(Integer id_user, String name, String local, Integer type, Integer open, Integer close, String des, String image, Long phone) {
+    public Eatery(Integer id_user, String name, String local, Integer type, Integer open, Integer close, String des, Long phone) {
         this.id_user = id_user;
         this.name = name;
         this.local = local;
@@ -120,7 +121,6 @@ public class Eatery {
         this.open = open;
         this.close = close;
         this.des = des;
-        this.image = image;
         this.phone = phone;
     }
 

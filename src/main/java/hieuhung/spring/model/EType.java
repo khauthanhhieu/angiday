@@ -1,10 +1,11 @@
 package hieuhung.spring.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "eatery_types")
-public class EType {
+public class EType implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

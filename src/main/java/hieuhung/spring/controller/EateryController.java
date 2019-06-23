@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -57,7 +60,18 @@ public class EateryController {
     }
 
     @GetMapping("/eatery/search")
-    public String getSearch(@RequestParam("name") String name, @RequestParam("addr") String addr) {
+    public String getSearch(@RequestParam("name") String name, @RequestParam("addr") String addr, Model model) {
+        List<Eatery> eateries = eateryService.getAllEatery();
+        List<Eatery> results = eateries
+                .stream()
+                .filter(eatery -> {
+                    String eName = eatery.getName().toLowerCase(new Locale("vi", "VN"));
+                    String keyName = name.toLowerCase(new Locale("vi", "VN"));
+                    return eName.contains(keyName);
+                })
+                .collect(Collectors.toList());
+        model.addAttribute("eateries", results);
+        model.addAttribute("etypes", eTypeService.getAllEType());
         return "listing";
     }
 }

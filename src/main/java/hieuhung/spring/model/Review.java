@@ -48,6 +48,8 @@ public class Review {
     @Column(name = "wpass")
     private String wpass;
 
+    private String reviewImage;
+
     public int getId() {
         return id;
     }
@@ -150,5 +152,13 @@ public class Review {
 
     public void setImage(Integer image) {
         this.image = image;
+    }
+
+    public String getReviewImage() {
+        return reviewImage;
+    }
+
+    public void setReviewImage(String reviewImage) {
+        this.reviewImage = reviewImage;
     }
 }

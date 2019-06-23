@@ -1,7 +1,9 @@
 package hieuhung.spring.service.impl;
 
+import hieuhung.spring.model.Image;
 import hieuhung.spring.model.Review;
 import hieuhung.spring.repo.ReviewRepo;
+import hieuhung.spring.service.ImageService;
 import hieuhung.spring.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ import java.util.Optional;
 public class ReviewServiceImpl implements ReviewService {
     @Autowired
     private ReviewRepo reviewRepo;
+
+    @Autowired
+    private ImageService imageService;
 
     @Override
     public List<Review> getAllReview() {
@@ -49,6 +54,13 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<Review> getReviewByEateryId(Integer eateryId) {
-        return reviewRepo.getReviewByEateryId(eateryId);
+        List<Review> reviews = reviewRepo.getReviewByEateryId(eateryId);
+
+        for (Review review : reviews) {
+            Image reviewImage = imageService.findImageById(review.getImage()).get();
+            review.setReviewImage(reviewImage.getImage());
+        }
+
+        return reviews;
     }
 }

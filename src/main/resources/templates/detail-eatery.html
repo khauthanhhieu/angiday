@@ -64,14 +64,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h5 th:text="${eatery.name}"></h5>
+                <h5 th:text="${eatery.getName()}"></h5>
                 <p><span>$$$</span>$$</p>
-                <p th:text="${eatery.type}" class="reserve-description"></p>
+                <p th:text="${eatery.getType()}" class="reserve-description"></p>
             </div>
             <div class="col-md-6">
                 <div class="reserve-seat-block">
                     <div class="reserve-rating">
-                        <span>9.5</span>
+                        <span th:text="${eatery.getPoint()}"></span>
                     </div>
                     <div class="review-btn">
                         <a th:href="@{/review/create(id=${eatery.id})}" class="btn btn-outline-danger">WRITE A REVIEW</a>
@@ -151,9 +151,7 @@
                                 to bring cash.
                             </p>
                             <ul>
-                                <li><img src="/images/review-img1.jpg" class="img-fluid" alt="#"></li>
-                                <li><img src="/images/review-img2.jpg" class="img-fluid" alt="#"></li>
-                                <li><img src="/images/review-img3.jpg" class="img-fluid" alt="#"></li>
+                                <li><img th:src="${review.getReviewImage()}" class="img-fluid" alt="#"></li>
                             </ul>
                             <span>28 people marked this review as helpful</span>
                             <a href="#"><span class="icon-like"></span>Helpful</a>
@@ -181,10 +179,9 @@
                     </div>
                     <div class="address">
                         <span class="icon-clock"></span>
-                        <p>Mon - Sun 09:30 am - 05:30 pm <br>
-                            <span class="open-now">OPEN NOW</span></p>
+                        <p th:text="'Mon - Sun 0' + ${eatery.getOpen()} + ':00 AM - 0' + ${eatery.getClose()} + ':00 PM'"></p>
                     </div>
-                    <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
+                    <span style="padding-left: 15px" class="open-now">OPEN NOW</span>
                 </div>
                 <div class="follow">
                     <div class="follow-img">

@@ -15,4 +15,6 @@ public interface ReviewService {
     Optional<Review> findReviewById(Integer id);
 
     List<Review> getReviewByEateryId(Integer eateryId);
+
+    List<Review> getReviewByUserId(Integer id);
 }

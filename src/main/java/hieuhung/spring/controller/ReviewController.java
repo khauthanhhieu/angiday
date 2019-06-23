@@ -1,10 +1,8 @@
 package hieuhung.spring.controller;
 
-import hieuhung.spring.model.EType;
 import hieuhung.spring.model.Eatery;
 import hieuhung.spring.model.Review;
 import hieuhung.spring.model.User;
-import hieuhung.spring.service.impl.ETypeServiceImpl;
 import hieuhung.spring.service.impl.EateryServiceImpl;
 import hieuhung.spring.service.impl.ReviewServiceImpl;
 import hieuhung.spring.service.impl.UserServiceImpl;
@@ -30,11 +28,6 @@ public class ReviewController {
     @Autowired
     private UserServiceImpl userService;
 
-    @GetMapping("/review")
-    public String main(Model model) {
-        return "detail-review"; //view
-    }
-
     @GetMapping("/review/create")
     public String getCreate (@RequestParam("id") Integer idEatery, Model model) {
         Review review = new Review();
@@ -53,7 +46,7 @@ public class ReviewController {
 
     @RequestMapping(value = "/review/save-review", method = RequestMethod.POST)
     public String save(Review review) {
-        reviewService.saveReview(review);
+        reviewService.saveReview(review); // đã bao gồm việc lấy ngày giờ, tính lại point cho eatery
         return "redirect:/eatery/detail?id=" + review.getIdEatery();
     }
 }

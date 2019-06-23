@@ -12,4 +12,6 @@ import java.util.List;
 public interface ReviewRepo extends CrudRepository<Review, Integer> {
     @Query(value = "select * from reviews where id_eatery = :eateryId", nativeQuery = true)
     List<Review> getReviewByEateryId(@Param("eateryId") Integer eateryId);
+
+    List<Review> findByIdUser(Integer id);
 }

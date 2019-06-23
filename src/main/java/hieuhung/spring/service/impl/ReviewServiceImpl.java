@@ -1,7 +1,9 @@
 package hieuhung.spring.service.impl;
 
 import hieuhung.spring.model.Image;
+import hieuhung.spring.model.Eatery;
 import hieuhung.spring.model.Review;
+import hieuhung.spring.repo.EateryRepo;
 import hieuhung.spring.repo.ReviewRepo;
 import hieuhung.spring.service.ImageService;
 import hieuhung.spring.service.ReviewService;
@@ -18,6 +20,9 @@ import java.util.Optional;
 public class ReviewServiceImpl implements ReviewService {
     @Autowired
     private ReviewRepo reviewRepo;
+
+    @Autowired
+    private EateryRepo eateryRepo;
 
     @Autowired
     private ImageService imageService;
@@ -39,6 +44,12 @@ public class ReviewServiceImpl implements ReviewService {
         review.setDate(date);
         review.setTime(time);
 
+        Eatery eatery = eateryRepo.findById(review.getIdEatery()).get();
+        int n = reviewRepo.getReviewByEateryId(review.getIdEatery()).size();
+        float sumPoint = n * eatery.getPoint();
+        eatery.setPoint((sumPoint + review.getPoint()) / (n + 1));
+
+        eateryRepo.save(eatery);
         reviewRepo.save(review);
     }
 
@@ -62,5 +73,10 @@ public class ReviewServiceImpl implements ReviewService {
         }
 
         return reviews;
+    }
+
+    @Override
+    public List<Review> getReviewByUserId(Integer id) {
+        return reviewRepo.findByIdUser(id);
     }
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Nhật kí Review</title>
+    <div th:replace="partials/head"></div>
+</head>
+
+<body>
+
+<div class="dark-bg sticky-top">
+    <div class="container-fluid">
+        <div th:replace="partials/header"></div>
+    </div>
+</div>
+
+<section class="main-block light-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="styled-heading">
+                    <h3 th:if="${reviews}">Review đã thực hiện</h3>
+                    <h3 th:unless="${reviews}">Bạn chưa thực hiện Review nào</h3>
+                </div>
+            </div>
+        </div>
+
+        <table th:if="${reviews}" class="table table-active">
+            <tr>
+                <th>Tiêu đề</th>
+                <th>Tên quán</th>
+                <th>Nội dung</th>
+                <th></th>
+            </tr>
+            <tr th:each="review : ${reviews}">
+                <td>
+                    <h6 th:text="${review.title}"></h6>
+                    <p th:text="${#dates.format(review.date,'dd-MM-YYYY')+' '+review.time}"></p>
+                </td>
+                <th:block th:each="eatery : ${eateries}">
+                    <td th:if="${review.idEatery == eatery.id}" th:text="${eatery.name}"></td>
+                </th:block>
+                <td th:text="${review.content}"></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<div th:replace="partials/footer"></div>
+
+<!-- jQuery, Bootstrap JS. -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

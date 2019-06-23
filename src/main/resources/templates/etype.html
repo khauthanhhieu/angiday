@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Kết quả tìm kiếm</title>
+    <title th:text="${etName}"></title>
     <div th:replace="partials/head"></div>
 </head>
 
@@ -15,42 +15,17 @@
 </div>
 <!--//END HEADER -->
 <!--============================= DETAIL =============================-->
-<section>
+<section class="main-block">
     <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="styled-heading">
+                    <h3 th:text="${etName}"></h3>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12 responsive-wrap">
-                <div class="row detail-filter-wrap">
-                    <div class="col-md-4 featured-responsive">
-                        <div class="detail-filter-text">
-                            <p class="d-inline" th:text="${eateries.size() + ' kết quả cho '}"></p>
-                            <p class="d-inline"><span th:text="${param.name}"></span></p>
-                        </div>
-                    </div>
-                    <div class="col-md-8 featured-responsive">
-                        <div class="detail-filter">
-                            <p>Filter by</p>
-                            <form class="filter-dropdown">
-                                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
-                                    <option selected>Best Match</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </form>
-                            <form class="filter-dropdown">
-                                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect1">
-                                    <option selected>Restaurants</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </form>
-                            <div class="map-responsive-wrap">
-                                <a class="map-icon" href="#"><span class="icon-location-pin"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row light-bg detail-options-wrap">
                     <th:block th:each="eatery : ${eateries}">
                         <div class="col-sm-4 col-lg-12 col-xl-4 featured-responsive">
@@ -60,9 +35,7 @@
                                     <span class="featured-rating-orange" th:text="${#numbers.formatDecimal(eatery.point,1,'DEFAULT',1,'POINT')}"></span>
                                     <div class="featured-title-box">
                                         <h6 th:text="${eatery.name}"></h6>
-                                        <th:block th:each="etype : ${etypes}">
-                                            <p th:if="${etype.id == eatery.type}" th:text="${etype.name}"></p>
-                                        </th:block>
+                                        <p th:text="${etName}"></p>
                                         <ul>
                                             <li><span class="icon-location-pin"></span>
                                                 <p th:text="${eatery.local}"></p>

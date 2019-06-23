@@ -32,4 +32,9 @@ public class EateryServiceImpl implements EateryService {
     public Optional<Eatery> findEateryById(Integer id) {
         return eateryRepo.findById(id);
     }
+
+    @Override
+    public List<Eatery> findEateryByType(Integer type) {
+        return eateryRepo.findByType(type);
+    }
 }

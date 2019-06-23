@@ -13,4 +13,6 @@ public interface EateryService {
     void deleteEatery(Integer id);
 
     Optional<Eatery> findEateryById(Integer id);
+
+    List<Eatery> findEateryByType(Integer type);
 }

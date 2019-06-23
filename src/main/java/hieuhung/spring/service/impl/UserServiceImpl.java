@@ -1,5 +1,6 @@
 package hieuhung.spring.service.impl;
 
+import hieuhung.spring.model.Review;
 import hieuhung.spring.model.User;
 import hieuhung.spring.repo.UserRepo;
 import hieuhung.spring.service.UserService;
@@ -7,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -46,4 +46,21 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByUsername(username);
     }
 
+    @Override
+    public List<User> getUserReviews(List<Review> reviewList) {
+        List<Integer> listIdUser = new ArrayList<>();
+        for (Review review : reviewList) {
+            listIdUser.add(review.getIdUser());
+        }
+        Set<Integer> set = new HashSet<>(listIdUser);
+        listIdUser.clear();
+        listIdUser.addAll(set);
+
+        List<User> userList = new ArrayList<>();
+        for (Integer id : listIdUser) {
+            userList.add(findById(id).get());
+        }
+
+        return userList;
+    }
 }

@@ -60,8 +60,12 @@ public class EateryController {
         List<Review> reviews = new ArrayList<>();
         reviews = reviewService.getReviewByEateryId(eateryId);
 
+        List<User> users = new ArrayList<>();
+        users = userService.getUserReviews(reviews);
+
         model.addAttribute("eatery", eatery);
         model.addAttribute("reviews", reviews);
+        model.addAttribute("users", users);
         return "detail-eatery";
     }
 

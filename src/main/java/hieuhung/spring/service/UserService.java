@@ -1,7 +1,7 @@
 package hieuhung.spring.service;
 
+import hieuhung.spring.model.Review;
 import hieuhung.spring.model.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,13 +9,15 @@ import java.util.Optional;
 
 public interface UserService {
 
-    public List<User> getAllUser();
+    List<User> getAllUser();
 
-    public void saveUser(User user);
+    void saveUser(User user);
 
-    public void deleteUser(Integer id);
+    void deleteUser(Integer id);
 
-    public Optional<User> findById(Integer id);
+    Optional<User> findById(Integer id);
 
-    public User findByUsername(String username);
+    User findByUsername(String username);
+
+    List<User> getUserReviews(List<Review> reviewList);
 }

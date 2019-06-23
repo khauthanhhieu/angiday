@@ -75,7 +75,7 @@
                     </div>
                     <div class="review-btn">
                         <a th:href="@{/review/create(id=${eatery.id})}" class="btn btn-outline-danger">WRITE A REVIEW</a>
-                        <span>34 reviews</span>
+                        <span th:text="${reviews.size() + 'reviews'}"></span>
                     </div>
                     <div class="reserve-btn">
                         <div class="featured-btn-wrap">
@@ -124,11 +124,12 @@
                 <div class="booking-checkbox_wrap mt-4">
                     <h5 th:text="${reviews.size()} + ' Reviews'"></h5>
                     <hr>
-                    <div th:each="review : ${reviews}">
-                    <div style="margin-bottom: 50px" class="customer-review_wrap">
+                    <th:block th:each="user: ${users}">
+                    <th:block th:each="review : ${reviews}">
+                    <div th:if="${user.getId() == review.getIdUser()}" class="customer-review_wrap">
                         <div class="customer-img">
                             <img src="/images/customer-img1.jpg" class="img-fluid" alt="#">
-                            <p>Amanda G</p>
+                            <p th:text="${user.getUsername()}"></p>
                             <span>35 Reviews</span>
                         </div>
                         <div class="customer-content-wrap">
@@ -140,7 +141,7 @@
                                     <span></span>
                                     <span></span>
                                     <span class="round-icon-blank"></span>
-                                    <p>Reviewed 2 days ago</p>
+                                    <p th:text="${review.getDate()}"></p>
                                 </div>
                                 <div class="customer-rating" th:text="${review.point}"></div>
                             </div>
@@ -158,10 +159,9 @@
                             <a href="#"><span class="icon-like"></span>Helpful</a>
                         </div>
                     </div>
-                    </div>
-                    <hr>
-                    <br>
-
+                        <hr>
+                    </th:block>
+                    </th:block>
                 </div>
             </div>
             <div class="col-md-4 responsive-wrap">

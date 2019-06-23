@@ -13,4 +13,6 @@ public interface ReviewService {
     void deleteReview(Integer id);
 
     Optional<Review> findReviewById(Integer id);
+
+    List<Review> getReviewByEateryId(Integer eateryId);
 }

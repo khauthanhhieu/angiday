@@ -46,4 +46,9 @@ public class ReviewServiceImpl implements ReviewService {
     public Optional<Review> findReviewById(Integer id) {
         return reviewRepo.findById(id);
     }
+
+    @Override
+    public List<Review> getReviewByEateryId(Integer eateryId) {
+        return reviewRepo.getReviewByEateryId(eateryId);
+    }
 }

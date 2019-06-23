@@ -1,10 +1,11 @@
 package hieuhung.spring.controller;
 
 import hieuhung.spring.model.Eatery;
-import hieuhung.spring.model.User;
-import hieuhung.spring.service.impl.ETypeServiceImpl;
-import hieuhung.spring.service.impl.EateryServiceImpl;
-import hieuhung.spring.service.impl.UserServiceImpl;
+import hieuhung.spring.model.Review;
+import hieuhung.spring.service.ETypeService;
+import hieuhung.spring.service.EateryService;
+import hieuhung.spring.service.ReviewService;
+import hieuhung.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -22,22 +24,20 @@ import java.util.stream.Collectors;
 
 @Controller
 public class EateryController {
-    @Autowired
-    private EateryServiceImpl eateryService;
+    @Autowired private EateryService eateryService;
 
-    @Autowired
-    private UserServiceImpl userService;
+    @Autowired private UserService userService;
 
-    @Autowired
-    private ETypeServiceImpl eTypeService;
+    @Autowired private ETypeService eTypeService;
 
+    @Autowired private ReviewService reviewService;
 
     @GetMapping("/eatery/create")
     public String getCreate(Model model) {
         Eatery eatery = new Eatery();
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userService.findByUsername(username);
-        eatery.setId_user(user.getId());
+        //User user = userService.findByUsername(username);
+        //eatery.setId_user(user.getId());
         model.addAttribute("eatery", eatery);
 
         model.addAttribute("etypes", eTypeService.getAllEType());
@@ -55,7 +55,12 @@ public class EateryController {
     public String getDetail(@RequestParam("id") Integer eateryId, Model model) {
         Optional<Eatery> checkedEatery = eateryService.findEateryById(eateryId);
         Eatery eatery = checkedEatery.get();
+
+        List<Review> reviews = new ArrayList<>();
+        reviews = reviewService.getReviewByEateryId(eateryId);
+
         model.addAttribute("eatery", eatery);
+        model.addAttribute("reviews", reviews);
         return "detail-eatery";
     }
 

@@ -557,38 +557,17 @@
     </section>
     <!--//END ADD LISTING -->
 
-    <table class="table table-active">
-        <tr>
-            <th>Name</th>
-            <th>Local</th>
-            <th>Type</th>
-            <th>Open</th>
-            <th>Close</th>
-            <th>Des</th>
-            <th>Image</th>
-        </tr>
-        <tr th:each="eatery : ${eateryList}">
-            <td th:text="${eatery.name}"></td>
-            <td th:text="${eatery.local}"></td>
-            <td th:text="${eatery.type}"></td>
-            <td th:text="${eatery.open}"></td>
-            <td th:text="${eatery.close}"></td>
-            <td th:text="${eatery.des}"></td>
-            <td th:text="${eatery.image}"></td>
-        </tr>
-    </table>
-
     <div class="row">
         <div class="col-md-4 featured-responsive" th:each="eatery : ${eateryList}">
             <div class="featured-place-wrap">
                 <a th:href="@{/eatery/detail(id=${eatery.id})}" >
                     <img src="/images/featured1.jpg" class="img-fluid" alt="#">
-                    <span th:classappend="${2 == 1} ? featured-rating-green : featured-rating" class="">6.5</span>
+                    <span th:classappend="${1 == 1} ? featured-rating-green : featured-rating" class="">6.5</span>
                     <div class="featured-title-box">
                         <h6 th:text="${eatery.name}"></h6>
                         <p th:text="${eatery.type}"></p> <span>• </span>
                         <p>3 Reviews</p> <span> • </span>
-                        <p><span>$$$</span>$$</p>
+                        <p><span>$$$$$</span></p>
                         <ul>
                             <li><span class="icon-location-pin"></span>
                                 <p th:text="${eatery.local}"></p>

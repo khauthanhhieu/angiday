@@ -11,6 +11,9 @@ public class User implements Serializable {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "avatar")
+    private String avatar;
+
     @Column(name = "fullname")
     private String fullname;
 
@@ -43,6 +46,14 @@ public class User implements Serializable {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public int getSex() {

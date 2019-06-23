@@ -63,7 +63,11 @@ public class EateryController {
         List<User> users = new ArrayList<>();
         users = userService.getUserReviews(reviews);
 
+        List<String> images = new ArrayList<>();
+        images = eateryService.getImages(eateryId);
+
         model.addAttribute("eatery", eatery);
+        model.addAttribute("imageList", images);
         model.addAttribute("reviews", reviews);
         model.addAttribute("users", users);
         return "detail-eatery";

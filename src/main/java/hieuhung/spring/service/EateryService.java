@@ -15,4 +15,6 @@ public interface EateryService {
     Optional<Eatery> findEateryById(Integer id);
 
     List<Eatery> findEateryByType(Integer type);
+
+    List<String> getImages(Integer id);
 }

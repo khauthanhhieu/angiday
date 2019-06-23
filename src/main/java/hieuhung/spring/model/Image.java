@@ -43,6 +43,26 @@ public class Image implements Serializable {
         this.image3 = image3;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getImage1() {
+        return image1;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public String getImage3() {
+        return image3;
+    }
+
     public Image() {}
 
     public Image(Integer id, String image, String image1, String image2, String image3) {

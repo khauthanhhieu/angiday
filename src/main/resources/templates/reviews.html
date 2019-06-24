@@ -34,13 +34,17 @@
             </tr>
             <tr th:each="review : ${reviews}">
                 <td>
-                    <h6 th:text="${review.title}"></h6>
+                    <th:block th:each="eatery : ${eateries}">
+                        <a th:if="${review.idEatery == eatery.id}" th:href="'/eatery/detail/?id=' + ${eatery.id} + '#' + ${review.id}">
+                            <h6 th:text="${review.title}"></h6>
+                        </a>
+                    </th:block>
                     <p th:text="${#dates.format(review.date,'dd-MM-YYYY')+' '+review.time}"></p>
                 </td>
                 <th:block th:each="eatery : ${eateries}">
                     <td th:if="${review.idEatery == eatery.id}" th:text="${eatery.name}"></td>
                 </th:block>
-                <td th:text="${review.content}"></td>
+                <td th:utext="${review.content}"></td>
                 <td></td>
             </tr>
         </table>

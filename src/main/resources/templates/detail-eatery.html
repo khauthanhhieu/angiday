@@ -71,11 +71,11 @@
             <div class="col-md-6">
                 <div class="reserve-seat-block">
                     <div class="reserve-rating">
-                        <span th:text="${eatery.getPoint()}"></span>
+                        <span th:text="${#numbers.formatDecimal(eatery.point,1,'DEFAULT',1,'POINT')}"></span>
                     </div>
                     <div class="review-btn">
                         <a th:href="@{/review/create(id=${eatery.id})}" class="btn btn-outline-danger">WRITE A REVIEW</a>
-                        <span th:text="${reviews.size() + 'reviews'}"></span>
+                        <span th:text="${reviews.size() + ' reviews'}"></span>
                     </div>
                     <div class="reserve-btn">
                         <div class="featured-btn-wrap">
@@ -126,7 +126,7 @@
                     <hr>
                     <th:block th:each="user: ${users}">
                     <th:block th:each="review : ${reviews}">
-                    <div th:if="${user.getId() == review.getIdUser()}" class="customer-review_wrap">
+                    <div th:id="${review.id}" th:if="${user.getId() == review.getIdUser()}" class="customer-review_wrap">
                         <div class="customer-img">
                             <img src="/images/customer-img1.jpg" class="img-fluid" alt="#">
                             <p th:text="${user.getUsername()}"></p>
@@ -141,11 +141,11 @@
                                     <span></span>
                                     <span></span>
                                     <span class="round-icon-blank"></span>
-                                    <p th:text="${review.getDate()}"></p>
+                                    <p th:text="${#dates.format(review.date,'dd-MM-YYYY')+' '+review.time}"></p>
                                 </div>
                                 <div class="customer-rating" th:text="${review.point}"></div>
                             </div>
-                            <p class="customer-text" th:text="${review.content}">.
+                            <p class="customer-text" th:utext="${review.content}">.
                             </p>
                             <p class="customer-text">I love how you can see into the kitchen and watch them make the noodles and you can definitely tell that this is a family run establishment. The prices are are great with one dish maybe being $9. You just have to remember
                                 to bring cash.
